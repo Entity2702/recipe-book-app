@@ -1,3 +1,0 @@
-function Tag( {color} ) {
- return;
-};

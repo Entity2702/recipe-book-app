@@ -1,5 +1,15 @@
+import { Route, Routes } from "react-router-dom";
+import Tag from "./components/Tags";
+
 function App() {
-  return;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<AllRecipes />} />
+        <Route path="/recipes/:id" element={<SingleRecipe />} />      
+      </Routes>
+    </>
+  );
 }
 
 export default App
