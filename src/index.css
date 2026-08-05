@@ -19,4 +19,12 @@
  --color-blue-transparent: #244FE933;
  
  --shadow-orange-custom: 0 0 10px 0 #FF99004D;
+
+ --width-mobile-card: 333px;
+ --width-card: 420px;
+ --height-mobile-card: 512px;
+ --height-card: 585px;
+
+ --radius-box: 10px;
+ --radius-card: 20px;
 }

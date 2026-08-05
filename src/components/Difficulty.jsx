@@ -71,7 +71,7 @@ function Difficulty({size, difficulty, type}){
  }
 
  return(
-  <button className={`rounded-[10px] border px-5 py-1 ${sizeStyle} ${difficultyStyle} ${typeStyle}`} >{text}</button>
+  <button className={`rounded-box border px-5 py-1 ${sizeStyle} ${difficultyStyle} ${typeStyle}`} >{text}</button>
  )
 }
 
