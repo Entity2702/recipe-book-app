@@ -3,8 +3,8 @@ import Difficulty from "./Difficulty";
 
 function Card({id, name, time, difficulty, cuisine, tags, image}){
  return(
-  <div key={id} className="w-mobile-card h-mobile-card md:w-card md:h-card rounded-card border border-black md:hover:shadow-orange-custom">
-   <img src={image} alt="Food photo" className="w-mobile-card h-55 md:w-card md:h-65 mb-5 border rounded-t-card" />
+  <div key={id} className="w-mobile-card min-h-mobile-card md:w-card md:min-h-card rounded-card border border-black md:hover:shadow-orange-custom mb-12.5 pb-5">
+   <img src={image} alt="Food photo" className="w-mobile-card h-55 md:w-card md:h-65 mb-5 border-b rounded-t-card" />
    <div className="flex gap-2.5 ml-5 mb-2.5 md:mb-6">
     {tags.map((tag) => <Tag color={'orange'} tag={tag} />)}
    </div>

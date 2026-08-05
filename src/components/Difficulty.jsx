@@ -1,77 +1,21 @@
 function Difficulty({size, difficulty, type}){
- let sizeStyle = '';
- let difficultyStyle = '';
- let typeStyle = '';
- let text = '';
-
- switch(size){
-  case 'large': {
-   sizeStyle = 'w-[120px] text-[20px]';
-   break;
-  };
-
-  case 'small': {
-   sizeStyle = 'inline-block text-[16px]';
-   break;
-  };
-
-  default: {
-   sizeStyle = 'inline-block text-[16px]';
-   break;
-  };
+ const sizeStyle = {
+  large: 'w-[120px] text-[20px]',
+  small: 'inline-block text-[16px]'
+ };
+ const filledStyle = {
+  Easy: 'border-dark-green text-dark-green bg-green-transparent',
+  Medium: 'border-dark-orange text-dark-orange bg-orange-transparent',
+  Hard: 'border-red text-red bg-red-transparent',
+  All: 'border-blue text-blue bg-blue-transparent'
  }
 
- switch(difficulty){
-  case 'easy': {
-   difficultyStyle = 'border-dark-green text-dark-green bg-green-transparent';
-   text = 'Easy';
-   break;
-  };
+ const outlinedStyle = 'border-black text-black bg-white';
 
-  case 'medium': {
-   difficultyStyle = 'border-dark-orange text-dark-orange bg-orange-transparent';
-   text = 'Medium';
-   break;
-  };
-
-  case 'hard': {
-   difficultyStyle = 'border-red text-red bg-red-transparent';
-   text = 'Hard';
-   break;
-  };
-
-  case 'all': {
-   difficultyStyle = 'border-blue text-blue bg-blue-transparent';
-   text = 'all';
-   break;
-  };
-
-  default: {
-   difficultyStyle = 'border-blue text-blue bg-blue-transparent';
-   text = 'all';
-   break;
-  };
- }
-
- switch(type) {
-  case 'filled': {
-   typeStyle = '';
-   break;
-  };
-
-  case 'outlined': {
-   typeStyle = 'border-black text-black bg-white';
-   break;
-  };
-
-  default: {
-   typeStyle = '';
-   break;
-  };
- }
+ const style = type === 'filled' ? filledStyle[difficulty] + ' ' + sizeStyle[size] : outlinedStyle + ' ' + sizeStyle[size];
 
  return(
-  <button className={`rounded-box border px-5 py-1 ${sizeStyle} ${difficultyStyle} ${typeStyle}`} >{text}</button>
+  <button className={`rounded-box border px-5 py-1 ${style}`} >{difficulty}</button>
  )
 }
 
