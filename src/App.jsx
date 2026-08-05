@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Tag from "./components/Tags";
 import Difficulty from "./components/Difficulty";
 import Searchbar from "./components/Searchbar";
+import LoadMore from "./components/LoadMore";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       </Routes> */}
       <Searchbar />
       <Tag color='blue' tag='gjieos' />
+      <LoadMore />
     </>
   );
 }
