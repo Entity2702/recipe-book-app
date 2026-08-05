@@ -6,4 +6,17 @@
 @theme {
  --font-nunito-sans: "Nunito Sans";
  --font-just-me-again-down-here: "Just Me Again Down Here";
+
+ --color-red: #D20C0C;
+ --color-red-transparent: #D20C0C1A;
+ --color-green: #04B100;
+ --color-green-transparent: #04B1001A;
+ --color-dark-green: #168914;
+ --color-orange: #FF9900;
+ --color-orange-transparent: #FF99001A;
+ --color-dark-orange: #C65F00;
+ --color-blue: #244FE9;
+ --color-blue-transparent: #244FE933;
+ 
+ --shadow-orange-custom: 0 0 10px 0 #FF99004D;
 }

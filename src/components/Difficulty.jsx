@@ -23,31 +23,31 @@ function Difficulty({size, difficulty, type}){
 
  switch(difficulty){
   case 'easy': {
-   difficultyStyle = 'border-[#04B100] text-[#04B100] bg-[#04B1001A]';
+   difficultyStyle = 'border-dark-green text-dark-green bg-green-transparent';
    text = 'Easy';
    break;
   };
 
   case 'medium': {
-   difficultyStyle = 'border-[#FF9900] text-[#FF9900] bg-[#FF99001A]';
+   difficultyStyle = 'border-dark-orange text-dark-orange bg-orange-transparent';
    text = 'Medium';
    break;
   };
 
   case 'hard': {
-   difficultyStyle = 'border-[#D20C0C] text-[#D20C0C] bg-[#D20C0C1A]';
+   difficultyStyle = 'border-red text-red bg-red-transparent';
    text = 'Hard';
    break;
   };
 
   case 'all': {
-   difficultyStyle = 'border-[#244FE9] text-[#244FE9] bg-[#244FE91A]';
+   difficultyStyle = 'border-blue text-blue bg-blue-transparent';
    text = 'all';
    break;
   };
 
   default: {
-   difficultyStyle = 'border-[#244FE9] text-[#244FE9] bg-[#244FE91A]';
+   difficultyStyle = 'border-blue text-blue bg-blue-transparent';
    text = 'all';
    break;
   };
