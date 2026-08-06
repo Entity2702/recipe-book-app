@@ -1,4 +1,4 @@
-function Difficulty({size, difficulty, type}){
+function Difficulty({size, difficulty, type, onClick}){
  const sizeStyle = {
   large: 'w-[120px] text-[20px]',
   small: 'inline-block text-[16px]'
@@ -14,9 +14,17 @@ function Difficulty({size, difficulty, type}){
 
  const style = type === 'filled' ? filledStyle[difficulty] + ' ' + sizeStyle[size] : outlinedStyle + ' ' + sizeStyle[size];
 
- return(
-  <button className={`rounded-box border px-5 py-1 ${style}`} >{difficulty}</button>
+ if(onClick){
+  return(
+  <button className={`rounded-box border px-5 py-1 ${style}`} onClick={onClick} >{difficulty}</button>
+ )
+ }
+ else {
+  return(
+  <div className={`rounded-box border px-5 py-1 ${style}`} >{difficulty}</div>
  )
 }
+}
+
 
 export default Difficulty;

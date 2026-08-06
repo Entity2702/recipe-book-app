@@ -8,8 +8,10 @@ import { use, useState } from "react";
 function AllRecipes(){
  const [limit, setLimit] = useState(6);
  const [search, setSearch] = useState('');
+ const [selectedDifficulty, setSelectedDifficulty] = useState('All');
 
  const handleLoadMore = () => {
+  if(recipes.total <= limit) alert("All recipes are shown!");
   setLimit((prevLimit) => prevLimit + 6);
  };
  
@@ -25,6 +27,12 @@ const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } =
  const recipes = search !== '' ? recipesSearch : recipesLimit;
  const error = search !== '' ? errorSearch : errorLimit;
  const isFetching = search !== '' ? isFetchingSearch : isFetchingLimit;
+
+ const filteredRecipes = selectedDifficulty === 'All' ? recipes?.recipes : recipes?.recipes.filter((recipe) => recipe.difficulty === selectedDifficulty);
+
+ const handleDifficulty = (difficulty) => {
+  setSelectedDifficulty(difficulty);
+ }
 
  return(
   <>
@@ -42,12 +50,12 @@ const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } =
     <Searchbar className={"mb-10 figma:mb-0 figma:left-12.5"} onSearch={handleSearch}/>
 
     <div className="flex flex-col figma:flex-row items-center gap-2.5 figma:gap-5">
-     <Difficulty difficulty={'all'} size={'large'} type={'outlined'} />
+     <Difficulty difficulty={'All'} size={'large'} type={selectedDifficulty === 'All' ? 'filled' : 'outlined'} onClick={() => handleDifficulty('All')} />
 
      <div className="flex gap-[11.5px] figma:gap-5 mt-2.5 figma:mt-0">
-      <Difficulty difficulty={'easy'} size={'large'} type={'outlined'} />
-      <Difficulty difficulty={'medium'} size={'large'} type={'outlined'} />
-      <Difficulty difficulty={'hard'} size={'large'} type={'outlined'} />
+     <Difficulty difficulty={'Easy'} size={'large'} type={selectedDifficulty === 'Easy' ? 'filled' : 'outlined'} onClick={() => handleDifficulty('Easy')} />
+     <Difficulty difficulty={'Medium'} size={'large'} type={selectedDifficulty === 'Medium' ? 'filled' : 'outlined'} onClick={() => handleDifficulty('Medium')} />
+     <Difficulty difficulty={'Hard'} size={'large'} type={selectedDifficulty === 'Hard' ? 'filled' : 'outlined'} onClick={() => handleDifficulty('Hard')} />
      </div>
     </div>
    </div>
@@ -55,7 +63,7 @@ const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } =
    <div className="grid grid-cols-1 figma:grid-cols-3 gap-y-12.5 figma:gap-x-10 figma:w-335">
     {
      
-     recipes?.recipes?.map((recipe) => <Card key={recipe.id} id={recipe.id} name={recipe.name} time={recipe.prepTimeMinutes + recipe.cookTimeMinutes} difficulty={recipe.difficulty} cuisine={recipe.cuisine} tags={recipe.tags} image={recipe.image} />)
+     filteredRecipes?.map((recipe) => <Card key={recipe.id} id={recipe.id} name={recipe.name} time={recipe.prepTimeMinutes + recipe.cookTimeMinutes} difficulty={recipe.difficulty} cuisine={recipe.cuisine} tags={recipe.tags} image={recipe.image} />)
     }
    </div>
    {isFetching && <p className="text-center mt-4">Loading more recipes...</p>}
