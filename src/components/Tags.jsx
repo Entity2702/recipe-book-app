@@ -10,7 +10,7 @@ function Tag( {color, tag, className} ) {
  const style = colorStyles[color] || colorStyles[orange];
 
  return(
-  <div className={`inline-block px-2.5 py-0.5 ${style} rounded-box border text-[16px] ${className}`}>{tag}</div>
+  <div className={`inline-block px-2.5 py-0.5 ${style} rounded-box border text-[16px] ${className} whitespace-nowrap`}>{tag}</div>
  )
 
 };

@@ -3,41 +3,68 @@ import Difficulty from "../components/Difficulty";
 import LoadMore from "../components/LoadMore";
 import Searchbar from "../components/Searchbar";
 import { useGetRecipesByIdQuery, useGetRecipesQuery, useSearchRecipesQuery } from "../api/RecipesAPI";
+import { use, useState } from "react";
 
 function AllRecipes(){
- const {data: recipes, error, isLoading } = useGetRecipesQuery();
+ const [limit, setLimit] = useState(6);
+ const [search, setSearch] = useState('');
+
+ const handleLoadMore = () => {
+  setLimit((prevLimit) => prevLimit + 6);
+ };
+ 
+ const handleSearch = (userSearch) => {
+  setSearch(userSearch);
+  setLimit(6);
+ }
+ 
+const {data: recipesLimit, error: errorLimit, isFetching: isFetchingLimit } = useGetRecipesQuery({limit: limit, skip: 0}, {skip: search !== ''});
+
+const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } = useSearchRecipesQuery({search: search, limit: limit}, {skip: search === ''});
+
+ const recipes = search !== '' ? recipesSearch : recipesLimit;
+ const error = search !== '' ? errorSearch : errorLimit;
+ const isFetching = search !== '' ? isFetchingSearch : isFetchingLimit;
 
  return(
   <>
-  <header className="relative w-full h-40 md:h-84 flex items-center justify-center overflow-hidden border border-black mb-10 md:mb-15">
+  <header className="relative w-full h-40 figma:h-84 flex items-center justify-center overflow-hidden border border-black mb-10 figma:mb-15">
    <img src="src/assets/bgimage.png" alt="background image" className="absolute inset-0 h-full w-full object-cover" />
    <div className="relative z-10 flex items-center justify-center w-full">
     <div className="border-3 border-white flex-1 rounded-r-full"/>
-    <img src="src/assets/Logo.svg" alt="Recipe Book" className="w-71.75 h-18 md:w-121.5 md:h-36" />
+    <img src="src/assets/Logo.svg" alt="Recipe Book" className="w-71.75 h-18 figma:w-121.5 figma:h-36" />
     <div className="border-3 border-white flex-1 rounded-l-full"/>
    </div>
   </header>
 
   <main className="flex flex-col items-center gap-10">
-   <Searchbar />
+   <div className="flex flex-col figma:flex-row figma:justify-between  figma:w-335">
+    <Searchbar className={"mb-10 figma:mb-0 figma:left-12.5"} onSearch={handleSearch}/>
 
-   <div>
-    <Difficulty difficulty={'all'} size={'large'} type={'outlined'} />
+    <div className="flex flex-col figma:flex-row items-center gap-2.5 figma:gap-5">
+     <Difficulty difficulty={'all'} size={'large'} type={'outlined'} />
 
-    <div className="flex gap-[11.5px] mt-2.5">
-     <Difficulty difficulty={'easy'} size={'large'} type={'outlined'} />
-     <Difficulty difficulty={'medium'} size={'large'} type={'outlined'} />
-     <Difficulty difficulty={'hard'} size={'large'} type={'outlined'} />
+     <div className="flex gap-[11.5px] figma:gap-5 mt-2.5 figma:mt-0">
+      <Difficulty difficulty={'easy'} size={'large'} type={'outlined'} />
+      <Difficulty difficulty={'medium'} size={'large'} type={'outlined'} />
+      <Difficulty difficulty={'hard'} size={'large'} type={'outlined'} />
+     </div>
     </div>
    </div>
    
-   <div>
+   <div className="grid grid-cols-1 figma:grid-cols-3 gap-y-12.5 figma:gap-x-10 figma:w-335">
     {
-     isLoading ? (<p>Recipes are loading</p>) : error ? (<p>Recipes failed to load</p>) :
-     recipes.recipes.map((recipe) => <Card key={recipe.id} id={recipe.id} name={recipe.name} time={recipe.prepTimeMinutes + recipe.cookTimeMinutes} difficulty={recipe.difficulty} cuisine={recipe.cuisine} tags={recipe.tags} image={recipe.image} />)
+     
+     recipes?.recipes?.map((recipe) => <Card key={recipe.id} id={recipe.id} name={recipe.name} time={recipe.prepTimeMinutes + recipe.cookTimeMinutes} difficulty={recipe.difficulty} cuisine={recipe.cuisine} tags={recipe.tags} image={recipe.image} />)
     }
    </div>
+   {isFetching && <p className="text-center mt-4">Loading more recipes...</p>}
+   {error && <p className="text-center mt-4 text-red-500">Recipes failed to load</p>}
   </main>
+
+  <footer className="flex justify-center my-12.5 figma:my-25">
+   <LoadMore onClick={handleLoadMore}/>
+  </footer>
   </>
  )
 }

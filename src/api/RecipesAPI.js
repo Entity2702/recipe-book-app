@@ -6,15 +6,15 @@ export const recipesApi = createApi({
  endpoints: (builder) => ({
 
   getRecipes: builder.query({
-   query: (limit = 6, skip = 0) => `recipes?limit=${limit}&skip=${skip}`,
+   query: ({limit = 6, skip = 0}) => `recipes?limit=${limit}&skip=${skip}`,
   }),
 
   getRecipesById: builder.query({
-   query: (id) => `recipes/${id}`,
+   query: ({id}) => `recipes/${id}`,
   }),
 
   searchRecipes: builder.query({
-   query: (search) => `recipes/search?q=${search}`,
+   query: ({search, limit = 6}) => `recipes/search?q=${search}&limit=${limit}`,
   }),
 
  })
