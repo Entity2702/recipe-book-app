@@ -46,10 +46,10 @@ const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } =
   </header>
 
   <main className="flex flex-col items-center gap-10">
-   <div className="flex flex-col figma:flex-row figma:justify-between  figma:w-335">
+   <div className="flex flex-col figma:flex-row figma:justify-between items-center figma:w-335">
     <Searchbar className={"mb-10 figma:mb-0 figma:left-12.5"} onSearch={handleSearch}/>
 
-    <div className="flex flex-col figma:flex-row items-center gap-2.5 figma:gap-5">
+    <div className="flex flex-col figma:flex-row gap-2.5 figma:gap-5">
      <Difficulty difficulty={'All'} size={'large'} type={selectedDifficulty === 'All' ? 'filled' : 'outlined'} onClick={() => handleDifficulty('All')} />
 
      <div className="flex gap-[11.5px] figma:gap-5 mt-2.5 figma:mt-0">

@@ -15,13 +15,19 @@ function SingleRecipe(){
 
  return(
   <>
-  <header className="px-5 flex items-center mb-7.5 mt-5 figma:px-0 figma:mt-11.5">
+  <header className="px-5 flex items-center mb-7.5 mt-5 figma:px-0 figma:mt-11.5 figma:grid-cols-[1fr_auto_1fr]">
+   <div className="flex flex-row items-center w-full">
    <Link to={'/'} className="figma:ml-12.5 border font-just-me-again-down-here px-5 rounded-box text-[32px] whitespace-nowrap">Go back</Link>
-   <hr className="border-2 w-full ml-8.25 rounded-full figma:flex-1"/>
-   <img src="/src/assets/LogoBlack.svg" alt="Logo black" className="w-20 h-[46.34px] figma:hidden" />
+   <hr className="border w-full ml-8.25 rounded-full"/>
+   </div>
+   <div className="flex flex-row items-center shrink-0">
+   <img src="/src/assets/LogoBlack.svg" alt="Logo black" className="w-20 h-[46.34px] pl-5 pr-2.5 figma:hidden" />
    <img src="/src/assets/LogoBlack.svg" alt="Logo black" className="w-20 h-20 hidden figma:block ml-5 mr-1.75" />
    <p className="hidden figma:block text-[40px] font-just-me-again-down-here whitespace-nowrap mr-6">Recipe Book</p>
-   <hr className="border-2 w-full hidden figma:block rounded-l-full figma:flex-1" />
+   </div>
+   <div className="w-full">
+   <hr className="border w-full hidden figma:block rounded-l-full" />
+   </div>
   </header>
 
   <main className="flex flex-col items-center px-5 gap-10 figma:grid figma:grid-cols-2 figma:grid-rows-2 figma:px-12.5 figma:gap-20">
