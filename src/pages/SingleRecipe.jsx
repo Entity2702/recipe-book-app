@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Tag from "../components/Tags";
 import Difficulty from "../components/Difficulty";
+import { logoBlack, cuisineImg, servings, level, cookTime } from "../assets/images";
 
 function SingleRecipe(){
  const { id } = useParams();
@@ -21,8 +22,8 @@ function SingleRecipe(){
    <hr className="border w-full ml-8.25 rounded-full"/>
    </div>
    <div className="flex flex-row items-center shrink-0">
-   <img src="/src/assets/LogoBlack.svg" alt="Logo black" className="w-20 h-[46.34px] pl-5 pr-2.5 figma:hidden" />
-   <img src="/src/assets/LogoBlack.svg" alt="Logo black" className="w-20 h-20 hidden figma:block ml-5 mr-1.75" />
+   <img src={logoBlack} alt="Logo black" className="w-20 h-[46.34px] pl-5 pr-2.5 figma:hidden" />
+   <img src={logoBlack} alt="Logo black" className="w-20 h-20 hidden figma:block ml-5 mr-1.75" />
    <p className="hidden figma:block text-[40px] font-just-me-again-down-here whitespace-nowrap mr-6">Recipe Book</p>
    </div>
    <div className="w-full">
@@ -42,25 +43,25 @@ function SingleRecipe(){
 
     <div className="figma:w-100">
      <div className="flex items-center mb-5 figma:mb-6.25">
-      <img src="/src/assets/level.svg" alt="level img" className="h-7.5 w-7.5"/>
+      <img src={level} alt="level img" className="h-7.5 w-7.5"/>
       <p className="text-[20px] ml-2">Level</p>
       <span className="ml-auto"><Difficulty size='small' difficulty={recipe.difficulty} type={'filled'} /></span>
      </div>
 
      <div className="flex items-center mb-5 figma:mb-6.25">
-       <img src="/src/assets/servings.svg" alt="servings img" className="h-7.5 w-7.5"/>
+       <img src={servings} alt="servings img" className="h-7.5 w-7.5"/>
        <p className="text-[20px] ml-2">Servings</p>
        <Tag className="ml-auto" color={'orange'} tag={recipe.servings} />
      </div>
 
      <div className="flex items-center mb-5 figma:mb-6.25">
-       <img src="/src/assets/cuisine.png" alt="cuisine img" className="h-7.5 w-7.5"/>
+       <img src={cuisineImg} alt="cuisine img" className="h-7.5 w-7.5"/>
        <p className="text-[20px] ml-2">Cuisine</p>
        <Tag className="ml-auto" color={'red'} tag={recipe.cuisine} />
      </div>
 
      <div className="flex items-center mb-5 figma:mb-6.25">
-       <img src="/src/assets/cooktime.png" alt="cook time img" className="h-7.5 w-7.5"/>
+       <img src={cookTime} alt="cook time img" className="h-7.5 w-7.5"/>
        <p className="text-[20px] ml-2">Time</p>
        <Tag className="ml-auto" color={'red'} tag={time} />
      </div>

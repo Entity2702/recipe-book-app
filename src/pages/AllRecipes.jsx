@@ -4,6 +4,7 @@ import LoadMore from "../components/LoadMore";
 import Searchbar from "../components/Searchbar";
 import { useGetRecipesByIdQuery, useGetRecipesQuery, useSearchRecipesQuery } from "../api/RecipesAPI";
 import { use, useState } from "react";
+import { bgimage, logo } from "../assets/images";
 
 function AllRecipes(){
  const [limit, setLimit] = useState(6);
@@ -37,10 +38,10 @@ const {data: recipesSearch, error: errorSearch, isFetching: isFetchingSearch } =
  return(
   <>
   <header className="relative w-full h-40 figma:h-84 flex items-center justify-center overflow-hidden border border-black mb-10 figma:mb-15">
-   <img src="src/assets/bgimage.png" alt="background image" className="absolute inset-0 h-full w-full object-cover" />
+   <img src={bgimage} alt="background image" className="absolute inset-0 h-full w-full object-cover" />
    <div className="relative z-10 flex items-center justify-center w-full">
     <div className="border-3 border-white flex-1 rounded-r-full"/>
-    <img src="src/assets/Logo.svg" alt="Recipe Book" className="w-71.75 h-18 figma:w-121.5 figma:h-36" />
+    <img src={logo} alt="Recipe Book" className="w-71.75 h-18 figma:w-121.5 figma:h-36" />
     <div className="border-3 border-white flex-1 rounded-l-full"/>
    </div>
   </header>

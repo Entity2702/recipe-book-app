@@ -1,6 +1,7 @@
 import Tag from "./Tags";
 import Difficulty from "./Difficulty";
 import { Link } from "react-router-dom";
+import { cuisineImg, cookTime } from "../assets/images";
 
 function Card({id, name, time, difficulty, cuisine, tags, image}){
  return(
@@ -13,12 +14,12 @@ function Card({id, name, time, difficulty, cuisine, tags, image}){
     <div className="ml-[17.5px] w-74.5 figma:w-95 figma:ml-5">
      <p className="font-just-me-again-down-here text-[40px] mb-5">{name}</p>
      <div className="flex items-center mb-5 figma:mb-6.25">
-      <img src="src/assets/cuisine.png" alt="cuisine img" className="h-7.5 w-7.5"/>
+      <img src={cuisineImg} alt="cuisine img" className="h-7.5 w-7.5"/>
       <p className="text-[20px]">Cuisine</p>
       <Tag className="ml-auto" color={'red'} tag={cuisine} />
      </div>
      <div className="flex items-center mb-5 figma:mb-10">
-      <img src="src\assets\cooktime.png" alt="cook time img" className="h-7.5 w-7.5"/>
+      <img src={cookTime} alt="cook time img" className="h-7.5 w-7.5"/>
       <p className="text-[20px]">Cook Time</p>
       <Tag className="ml-auto" color={'blue'} tag={time + ' min'} />
      </div>
